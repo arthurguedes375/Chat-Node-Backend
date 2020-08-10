@@ -5,6 +5,8 @@
 
 - Clone this repository
 
+- Import database in src/db/db.sql (mysql)
+
 - Run this commands in the repository folder
 
 ```
