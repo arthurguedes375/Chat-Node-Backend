@@ -1,11 +1,10 @@
 const knex = require('./connect');
 
 const message = {
-    load(callback) {
+    async load(callback = function () { }) {
 
-        let results = knex('message').then((messages) => {
-            callback(messages);
-        });
+        const results = await knex('message');
+        callback(messages);
     },
 
     new(message) {
