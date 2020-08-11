@@ -34,7 +34,9 @@ function sockets(messages = [], err) {
                 }
             })
         } else {
-            socket.broadcast.emit("internalServerError", { message: "Internal Server Error, Try again later" });
+            const messageResponse = { message: "Internal Server Error. You don't need to reload this page, Wait or Try again later" }
+            socket.emit("internalServerError", messageResponse);
+            socket.broadcast.emit("internalServerError", messageResponse);
         }
     });
 
