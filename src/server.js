@@ -17,12 +17,8 @@ io.origins('*:*')
 
 app.use(routes);
 
-
-
-message.load(sockets);
-
-function sockets(messages = [], err) {
-
+(async () => {
+    let messages = await message.load();
 
     // When the socket connect
     io.on('connection', (socket) => {
@@ -44,8 +40,7 @@ function sockets(messages = [], err) {
             socket.broadcast.emit("internalServerError", messageResponse);
         }
     });
-
-}
+})();
 
 
 io.listen(process.env.SOCKET_PORT);

@@ -1,13 +1,13 @@
-const knex = require('./connect');
+const knex = require('../db/connect');
 
 const message = {
-    async load(callback = function (results, err = null) { }) {
+    async load() {
         let results;
         try {
             results = await knex('message');
-            callback(results);
+            return { results };
         } catch (err) {
-            callback(results, err);
+            return { results, err };
         }
     },
 
@@ -20,6 +20,5 @@ const message = {
         }
     }
 };
-
 
 module.exports = message;
