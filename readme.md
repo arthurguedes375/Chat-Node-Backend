@@ -1,4 +1,4 @@
-# Chat Backend made in nodejs
+# Chat Real time Backend made in nodejs
 
 
 ## Getting started
@@ -6,6 +6,10 @@
 - Clone this repository
 
 - Import database in src/db/db.sql (mysql)
+
+- Config knex file to your db settings
+
+- If you use this project frontend, and you change .env file you need to change in frontend sockets connection
 
 - Run this commands in the repository folder
 

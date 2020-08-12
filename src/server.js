@@ -1,3 +1,8 @@
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '..', '.env') });
+
+
+// Express
 const express = require('express');
 const app = express();
 const routes = require('./routes');
@@ -25,7 +30,7 @@ function sockets(messages = [], err) {
             // Emit some message only to the user who connect
             socket.emit('previousMessages', messages);
 
-            // When sendMessage event is called add to messages the data and emit to everyone connected the new message
+            // When sendMessage event is called add to messages the data and emit to everyone connected this message
             socket.on("sendMessage", data => {
                 if (data.author && data.message) {
                     messages.push(data);
@@ -43,5 +48,5 @@ function sockets(messages = [], err) {
 }
 
 
-io.listen(5000);
-app.listen(3333);
+io.listen(process.env.SOCKET_PORT);
+app.listen(process.env.HTTP_PORT);
